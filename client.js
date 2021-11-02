@@ -58,34 +58,42 @@ function finalCalculation(employee){
   }
 
     //Conditional logic for old employees (per README l.60) ✅
-    if (employee.employeeNumber.length = 4 ){
-      employee.bonusPercentage += 5
-    }
-    
-        //Conditional logic to determine Base Bonus (per README l.56-59)
+    if (employee.employeeNumber.length === 4 ){
+      calculatedEmployee.bonusPercentage += 5;
+    };
+        //Conditional logic to determine Base Bonus (per README l.56-59) ✅
     //evaluate their employee.reviewRating, and assign that multiplier to employee.annualSalary
-    if (employee.reviewRating = 3){
-      employee.bonusPercentage += 4
-    } else if (employee.reviewRating = 4){
-      employee.bonusPercentage += 6
+    if (employee.reviewRating === 3){
+      calculatedEmployee.bonusPercentage += 4;
+    } else if (employee.reviewRating === 4){
+      calculatedEmployee.bonusPercentage += 6;
+    } else if (employee.reviewRating === 5){
+      calculatedEmployee.bonusPercentage += 10;
+    };
 
-    } else if (employee.reviewRating = 5){
-      employee.bonusPercentage += 10
-    }
+    //Check annual income (per README l.62) ✅
+    if (employee.annualSalary >= 65000){
+      calculatedEmployee.bonusPercentage -= 1;
+    };
 
-    //Check annual income (per README l.62)
+    //Check that bonus is >0 and <13 (per README l.63) ✅
+    if (calculatedEmployee.bonusPercentage < 0){
+      calculatedEmployee.bonusPercentage = 0;
+    } else if (calculatedEmployee.bonusPercentage > 13){
+      calculatedEmployee.bonusPercentage = 13;
+    };
+    console.log(`${employee.name}'s bonus percentage: ${calculatedEmployee.bonusPercentage}`);
     
+    // Calculate Total Bonus in $$ (per README l.53)
+    // calculatedEmployee.totalCompensation = employee.annualSalary + calculatedEmployee.totalBonus
 
-    //Check that bonus is >0 and <13 (per README l.63)
-  
-  
-// calculatedEmployee.totalCompensation = employee.annualSalary + calculatedEmployee.totalBonus
-
+    // Calculate Total Compensation in $$ (per README l.52)
 
   //RETURN a new object with .name, .bonusPercentage, .totalCompensation, .totalBonus
+
+
   return calculatedEmployee
 }
-
 
 console.log( employees );
 loopEmployees(employees);
