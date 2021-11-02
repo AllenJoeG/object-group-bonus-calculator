@@ -39,4 +39,53 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+function loopEmployees(array){
+  for (let employee of array){
+    console.log(employee);
+    console.log(finalCalculation(employee));
+
+  }
+};
+
+
+function finalCalculation(employee){
+  //final goal is to generate and return this new object info
+  let calculatedEmployee = {
+    name: employee.name,
+    bonusPercentage: 0,
+    totalCompensation: 0,
+    totalBonus: 0,
+  }
+
+    //Conditional logic for old employees (per README l.60) ✅
+    if (employee.employeeNumber.length = 4 ){
+      employee.bonusPercentage += 5
+    }
+    
+        //Conditional logic to determine Base Bonus (per README l.56-59)
+    //evaluate their employee.reviewRating, and assign that multiplier to employee.annualSalary
+    if (employee.reviewRating = 3){
+      employee.bonusPercentage += 4
+    } else if (employee.reviewRating = 4){
+      employee.bonusPercentage += 6
+
+    } else if (employee.reviewRating = 5){
+      employee.bonusPercentage += 10
+    }
+
+    //Check annual income (per README l.62)
+    
+
+    //Check that bonus is >0 and <13 (per README l.63)
+  
+  
+// calculatedEmployee.totalCompensation = employee.annualSalary + calculatedEmployee.totalBonus
+
+
+  //RETURN a new object with .name, .bonusPercentage, .totalCompensation, .totalBonus
+  return calculatedEmployee
+}
+
+
 console.log( employees );
+loopEmployees(employees);
