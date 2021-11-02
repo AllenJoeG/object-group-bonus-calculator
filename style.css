@@ -1,3 +1,21 @@
-body{
-  
+body {
+  background-color: cyan;
+  font-size: 18px;
+}
+.bonusReport{
+    color: rgb(255, 0, 0);
+    font-size: 1em;
+
+}
+
+.bonusReport:nth-child(2n){
+    color: #133857;
+    background-color: rgba(126, 124, 124, 0.507);
+    font-size: 1em;
+}
+
+.bonusReport:nth-child(3n){
+    color: #9a3ecf;
+    font-size: 1em;
+
 }

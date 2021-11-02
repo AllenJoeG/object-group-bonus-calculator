@@ -39,21 +39,32 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+//Stretch Goal - JQuery so we can do things to the DOM
 function jqReady(){
   console.log('JQuery sourced')
   $('#giveMePayroll').on('click', loopEmployees);
-}
+};
 
+//Required Feature
 function loopEmployees(){
   let employeeBonuses = [];
   for (let employee of employees){
     //console.log(employee);
     //console.log(bonusCalculation(employee));
     employeeBonuses.push(bonusCalculation(employee));
-  }
-  console.log(`Logging bonuses array 'employeeBonuses':`, employeeBonuses);
+    //$('#payOut').append(`<li>${employee.name} gets a bonus of $${bonusCalculation(employee).totalBonus} for a total compensation of $${bonusCalculation(employee).totalCompensation} </li>`);
+    //Look at this nonsense that runs the function two additional times! But it works!
+  };
+
+    //Stretch Goal - Puttin' it on the DOM ✅
+    for (let i in employeeBonuses){
+      $('#payOut').append(`<li class="bonusReport">${employees[i].name} gets a bonus of $${employeeBonuses[i].totalBonus} for a total compensation of $${employeeBonuses[i].totalCompensation} </li>`);
+    };
+  
+  //console.log(`Logging bonuses array 'employeeBonuses':`, employeeBonuses);
 };
 
+//Required Feature
 function bonusCalculation(employee){
   //final goal is to generate and return this new object info
   let calculatedEmployee = {
@@ -61,7 +72,7 @@ function bonusCalculation(employee){
     bonusPercentage: 0,
     totalCompensation: 0,
     totalBonus: 0,
-  }
+  };
 
     //Conditional logic for old employees (per README l.60) ✅
     if (employee.employeeNumber.length === 4 ){
@@ -99,7 +110,7 @@ function bonusCalculation(employee){
     //console.log(calculatedEmployee.totalCompensation);
 
   return calculatedEmployee;
-}
+};
 
 ///BIG OLD CODE HAPPEN TIME
 
