@@ -39,16 +39,22 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-function loopEmployees(array){
-  for (let employee of array){
-    console.log(employee);
-    console.log(finalCalculation(employee));
+function jqReady(){
+  console.log('JQuery sourced')
+  $('#giveMePayroll').on('click', loopEmployees);
+}
 
+function loopEmployees(){
+  let employeeBonuses = [];
+  for (let employee of employees){
+    //console.log(employee);
+    //console.log(bonusCalculation(employee));
+    employeeBonuses.push(bonusCalculation(employee));
   }
+  console.log(`Logging bonuses array 'employeeBonuses':`, employeeBonuses);
 };
 
-
-function finalCalculation(employee){
+function bonusCalculation(employee){
   //final goal is to generate and return this new object info
   let calculatedEmployee = {
     name: employee.name,
@@ -82,18 +88,22 @@ function finalCalculation(employee){
     } else if (calculatedEmployee.bonusPercentage > 13){
       calculatedEmployee.bonusPercentage = 13;
     };
-    console.log(`${employee.name}'s bonus percentage: ${calculatedEmployee.bonusPercentage}`);
+    //console.log(`${employee.name}'s bonus percentage: ${calculatedEmployee.bonusPercentage}`);
     
-    // Calculate Total Bonus in $$ (per README l.53)
-    // calculatedEmployee.totalCompensation = employee.annualSalary + calculatedEmployee.totalBonus
+    // Calculate Total Bonus in $$ (per README l.53) ✅
+    calculatedEmployee.totalBonus = employee.annualSalary * (calculatedEmployee.bonusPercentage / 100);
+    //console.log(calculatedEmployee.totalBonus);
 
     // Calculate Total Compensation in $$ (per README l.52)
+    calculatedEmployee.totalCompensation = Number(employee.annualSalary) + calculatedEmployee.totalBonus;
+    //console.log(calculatedEmployee.totalCompensation);
 
-  //RETURN a new object with .name, .bonusPercentage, .totalCompensation, .totalBonus
-
-
-  return calculatedEmployee
+  return calculatedEmployee;
 }
 
-console.log( employees );
-loopEmployees(employees);
+///BIG OLD CODE HAPPEN TIME
+
+$(document).ready(jqReady);
+
+console.log(`Logging initial array 'employees':`, employees);
+//loopEmployees(employees);
